@@ -1,31 +1,26 @@
 <p align="center">
 
-  <!-- Core Identity -->
-  <img src="https://img.shields.io/badge/Commander_Flame-AI_Leadership-black?style=for-the-badge&logo=fire&logoColor=orange" />
+  <!-- AI Leadership -->
+  <img src="https://img.shields.io/badge/Chief%20AI%20Officer-CAIO-black?style=for-the-badge&logo=apache-spark&logoColor=white"/>
+  <img src="https://img.shields.io/badge/AI%20Implementation-CAIIP-orange?style=for-the-badge&logo=ai&logoColor=white"/>
 
-  <!-- Certification Count -->
-  <img src="https://img.shields.io/badge/35%2B_Certifications-Verified-blue?style=for-the-badge&logo=trustpilot&logoColor=white" />
-  
-  <!-- AI Governance -->
-  <img src="https://img.shields.io/badge/AI_Governance-CAIO_%2B_CAIIP-gold?style=for-the-badge&logo=govuk&logoColor=white" />
+  <!-- Cloud / DevOps -->
+  <img src="https://img.shields.io/badge/AWS%20Cloud%20Architect-Pro-blue?style=for-the-badge&logo=amazonaws&logoColor=white"/>
+  <img src="https://img.shields.io/badge/AWS%20DevOps-Engineer-green?style=for-the-badge&logo=amazonaws&logoColor=white"/>
+  <img src="https://img.shields.io/badge/AWS%20Security-Specialty-purple?style=for-the-badge&logo=amazonaws&logoColor=white"/>
 
-  <!-- Cloud & AWS -->
-  <img src="https://img.shields.io/badge/AWS_Cloud-Architecture_Engineer-orange?style=for-the-badge&logo=amazonaws&logoColor=white" />
+  <!-- Kubernetes / Orchestration -->
+  <img src="https://img.shields.io/badge/Kubernetes-CKA-326ce5?style=for-the-badge&logo=kubernetes&logoColor=white"/>
 
-  <!-- Kubernetes -->
-  <img src="https://img.shields.io/badge/Kubernetes-CKA_Track-326ce5?style=for-the-badge&logo=kubernetes&logoColor=white" />
+  <!-- Automation / Agents -->
+  <img src="https://img.shields.io/badge/n8n-Automation-red?style=for-the-badge&logo=n8n&logoColor=white"/>
+  <img src="https://img.shields.io/badge/LLM%20Engineering-GenAI-brightgreen?style=for-the-badge&logo=openai&logoColor=white"/>
 
-  <!-- Machine Learning -->
-  <img src="https://img.shields.io/badge/LLM_Engineering-GenAI_Master-green?style=for-the-badge&logo=openai&logoColor=white" />
+  <!-- Compliance -->
+  <img src="https://img.shields.io/badge/SOC2%20%7C%20NIST%20%7C%20GDPR-Compliance-grey?style=for-the-badge&logo=trustpilot&logoColor=white"/>
 
-  <!-- Automation & Agents -->
-  <img src="https://img.shields.io/badge/n8n-Automation_%2F_Agents-ff6d5a?style=for-the-badge&logo=n8n&logoColor=white" />
-  
-  <!-- Security & Compliance -->
-  <img src="https://img.shields.io/badge/Security-%F0%9F%94%90_Compliance_First-critical?style=for-the-badge&logo=datadog&logoColor=white" />
-
-  <!-- Hours Logged -->
-  <img src="https://img.shields.io/badge/400%2B_Hours-Hands_On_Training-purple?style=for-the-badge&logo=clockify&logoColor=white" />
+  <!-- Training Time -->
+  <img src="https://img.shields.io/badge/400%2B%20Hours-Hands--On%20Training-yellow?style=for-the-badge&logo=clockify&logoColor=black"/>
 
 </p>
 
