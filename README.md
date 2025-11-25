@@ -2,7 +2,8 @@
 
 Mastery Logged. Authority Verified.
 
-This is the public ledger of my ascent — 35+ certifications across AI, data science, engineering, governance, ethics, automation, and legal tech.
+This is the public ledger of my ascent 
+35+ certifications across AI, data science, engineering, governance, ethics, automation, and legal tech.
 Each scroll represents a stage of my evolution from practitioner → implementer → commander.
 
 ⚙️ Certification Categories
