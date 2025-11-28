@@ -179,8 +179,9 @@ document.addEventListener("keydown", (e) => {
 
 // 5) Init
 document.addEventListener("DOMContentLoaded", // Voice / Speech
+// Voice / Speech
 const voiceBtn = document.getElementById("fd-voice-btn");
-const aboutText = document.querySelector(".fd-about");
+const aboutText = document.getElementById("fd-about-text");
 
 if (voiceBtn && aboutText && "speechSynthesis" in window) {
   voiceBtn.addEventListener("click", () => {
@@ -201,6 +202,7 @@ if (voiceBtn && aboutText && "speechSynthesis" in window) {
     const utterance = new SpeechSynthesisUtterance(fullSpeech);
     utterance.rate = 1;
     utterance.pitch = 1;
+
     speechSynthesis.speak(utterance);
   });
 }
