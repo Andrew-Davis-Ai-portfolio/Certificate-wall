@@ -182,10 +182,12 @@ document.addEventListener("DOMContentLoaded", () => {
   // Render the certificates
   renderWall();
 
-  // --- Voice / Speech setup ---
-  const voiceBtn = document.getElementById("fd-voice-btn");
-  const certBtn = document.getElementById("fd-cert-btn");
   const aboutText = document.querySelector(".fd-about");
+
+  // If the browser doesn't support speech, bail early
+  if (!("speechSynthesis" in window) || !aboutText) {
+    return;
+  }
 
   // 35+ cert narration chunk
   const certNarration = `
@@ -209,34 +211,38 @@ AI Coding & Cursor Engineering.
 This certification portfolio represents hands-on capability across governance, cloud, security, automation, and responsible AI deployment.
   `.trim();
 
-  if ("speechSynthesis" in window) {
-    // Intro button — reads the about section
-    if (voiceBtn && aboutText) {
-      voiceBtn.addEventListener("click", () => {
-        speechSynthesis.cancel();
+  // Expose functions so inline onclick can use them
+  window.__playIntro = function () {
+    speechSynthesis.cancel();
 
-        const intro = new SpeechSynthesisUtterance(
-          aboutText.innerText.trim()
-        );
-        intro.rate = 1;
-        intro.pitch = 1;
+    const intro = new SpeechSynthesisUtterance(
+      aboutText.innerText.trim()
+    );
+    intro.rate = 1;
+    intro.pitch = 1;
 
-        speechSynthesis.speak(intro);
-      });
-    }
+    speechSynthesis.speak(intro);
+  };
 
-    // Cert button — reads ONLY the certifications block
-    if (certBtn) {
-      certBtn.addEventListener("click", () => {
-        speechSynthesis.cancel();
+  window.__playCerts = function () {
+    speechSynthesis.cancel();
 
-        const certUtterance = new SpeechSynthesisUtterance(certNarration);
-        certUtterance.rate = 1;
-        certUtterance.pitch = 1;
+    const certUtterance = new SpeechSynthesisUtterance(certNarration);
+    certUtterance.rate = 1;
+    certUtterance.pitch = 1;
 
-        speechSynthesis.speak(certUtterance);
-      });
-    }
+    speechSynthesis.speak(certUtterance);
+  };
+
+  // Also wire up via addEventListener (belt + suspenders)
+  const voiceBtn = document.getElementById("fd-voice-btn");
+  const certBtn = document.getElementById("fd-cert-btn");
+
+  if (voiceBtn) {
+    voiceBtn.addEventListener("click", window.__playIntro);
+  }
+  if (certBtn) {
+    certBtn.addEventListener("click", window.__playCerts);
   }
 });
   const certNarration = `
