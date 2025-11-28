@@ -209,7 +209,6 @@ window.__playIntro = function () {
   const aboutText = document.querySelector(".fd-about");
   if (!aboutText) return;
 
-  // stop any previous speech
   speechSynthesis.cancel();
 
   const utterance = new SpeechSynthesisUtterance(
@@ -225,7 +224,6 @@ window.__playIntro = function () {
 window.__playCerts = function () {
   if (!("speechSynthesis" in window)) return;
 
-  // stop any previous speech
   speechSynthesis.cancel();
 
   const utterance = new SpeechSynthesisUtterance(certNarration);
