@@ -209,24 +209,41 @@ This certification portfolio represents hands-on capability across governance, c
 `;
 
   if (voiceBtn && aboutText && "speechSynthesis" in window) {
-    voiceBtn.addEventListener("click", () => {
-  // small visual confirmation
-  voiceBtn.textContent = "▶️ Playing intro…";
+  voiceBtn.addEventListener("click", () => {
+    // small visual confirmation
+    voiceBtn.textContent = "▶️ Playing intro…";
 
-  // stop any previous speech
-  speechSynthesis.cancel();
+    // stop any previous speech
+    speechSynthesis.cancel();
 
-  // main about text + cert narration
-  const fullSpeech =
-    aboutText.innerText.trim() + " " + certNarration.trim();
+    // split into two chunks so Safari / iOS doesn't cut it off
+    const parts = [
+      aboutText.innerText.trim(),
+      certNarration.trim()
+    ];
 
-  const utterance = new SpeechSynthesisUtterance(fullSpeech);
-  utterance.rate = 1;
-  utterance.pitch = 1;
+    let index = 0;
 
-  speechSynthesis.speak(utterance);
-});
-});
+    const speakNext = () => {
+      if (index >= parts.length) {
+        // reset button text when finished
+        voiceBtn.textContent = "▶️ Listen to this";
+        return;
+      }
+
+      const utterance = new SpeechSynthesisUtterance(parts[index]);
+      utterance.rate = 1;
+      utterance.pitch = 1;
+
+      utterance.onend = speakNext; // when one finishes, play the next
+      speechSynthesis.speak(utterance);
+
+      index++;
+    };
+
+    speakNext();
+  });
+}
   const certNarration = `
 Andrew Davis holds over thirty five professional certifications, including:
 
