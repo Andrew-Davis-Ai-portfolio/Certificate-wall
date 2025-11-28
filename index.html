@@ -104,13 +104,69 @@
     </div>
   </div>
 
-  <footer class="fd-footer">
+    <footer class="fd-footer">
     <p>
       Flame Division • Certification Wall • Built for recruiters, partners, and clients.
     </p>
   </footer>
 
-  <!-- make sure this is here at the very end of <body> -->
   <script src="wall.js"></script>
+
+  <!-- Text-to-speech for the About section -->
+  <script>
+    (function () {
+      const btn = document.getElementById('fd-voice-btn');
+      const about = document.getElementById('fd-about-text');
+
+      if (!btn || !about || !('speechSynthesis' in window)) {
+        // Browser doesn't support TTS or elements not found
+        return;
+      }
+
+      let isSpeaking = false;
+      let utterance = null;
+
+      function stopSpeaking() {
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
+        btn.classList.remove('is-speaking');
+        btn.textContent = '▶ Listen to this';
+      }
+
+      function startSpeaking() {
+        const text = about.innerText.trim();
+        if (!text) return;
+
+        utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 1.0;   // speed (0.5–2)
+        utterance.pitch = 1.0;  // tone (0–2)
+        utterance.onend = stopSpeaking;
+        utterance.onerror = stopSpeaking;
+
+        isSpeaking = true;
+        btn.classList.add('is-speaking');
+        btn.textContent = '⏸ Stop';
+
+        window.speechSynthesis.speak(utterance);
+      }
+
+      btn.addEventListener('click', () => {
+        if (isSpeaking) {
+          stopSpeaking();
+        } else {
+          // stop any other speech first
+          window.speechSynthesis.cancel();
+          startSpeaking();
+        }
+      });
+
+      // Escape key stops speech
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isSpeaking) {
+          stopSpeaking();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
