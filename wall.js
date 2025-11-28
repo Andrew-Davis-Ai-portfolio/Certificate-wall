@@ -178,28 +178,32 @@ document.addEventListener("keydown", (e) => {
 });
 
 // 5) Init
-document.addEventListener("DOMContentLoaded", renderWall);
-// ✅ Voice / Speech
+document.addEventListener("DOMContentLoaded", // Voice / Speech
 const voiceBtn = document.getElementById("fd-voice-btn");
 const aboutText = document.querySelector(".fd-about");
 
 if (voiceBtn && aboutText && "speechSynthesis" in window) {
   voiceBtn.addEventListener("click", () => {
-  speechSynthesis.cancel();
+    // stop anything currently speaking
+    speechSynthesis.cancel();
 
-  const fullSpeech =
-    aboutText.innerText.trim() +
-    " The following certifications validate this capability. " +
-    certList.map(c => c.title).join(", ") +
-    ". End of certifications.";
+    // main about text
+    const about = aboutText.innerText.trim();
 
-  const utterance = new SpeechSynthesisUtterance(fullSpeech);
-  utterance.rate = 1;
-  utterance.pitch = 1;
+    // build a comma-separated list of cert titles from CERTS
+    const certNames = CERTS.map(c => c.title).join(", ");
 
-  speechSynthesis.speak(utterance);
-});
+    // full narration
+    const fullSpeech =
+      `${about} The following certifications validate this capability: ` +
+      `${certNames}. End of certifications.`;
 
+    const utterance = new SpeechSynthesisUtterance(fullSpeech);
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    speechSynthesis.speak(utterance);
+  });
+}
   const certNarration = `
 Andrew Davis holds over thirty five professional certifications, including:
 
