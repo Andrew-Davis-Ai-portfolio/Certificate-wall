@@ -51,12 +51,20 @@
       </p>
     <div class="fd-voice-wrap">
   <!-- Intro / About narration -->
-  <button class="fd-voice-btn" id="fd-voice-btn">
+  <button
+    class="fd-voice-btn"
+    id="fd-voice-btn"
+    onclick="window.__playIntro && window.__playIntro()"
+  >
     ▶ Listen to this
   </button>
 
   <!-- Certifications narration -->
-  <button class="fd-voice-btn fd-voice-btn--secondary" id="fd-cert-btn">
+  <button
+    class="fd-voice-btn fd-voice-btn--secondary"
+    id="fd-cert-btn"
+    onclick="window.__playCerts && window.__playCerts()"
+  >
     ▶ Hear certifications
   </button>
 </div>
