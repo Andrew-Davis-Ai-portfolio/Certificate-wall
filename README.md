@@ -24,6 +24,18 @@
 
 </p>
 
+# Andrew W. Davis — AI Systems Architect
+
+🔗 **Live Certification Wall (Public Portfolio):**  
+👉 https://andrew-davis-ai-portfolio.github.io/Certificate-wall/
+
+---
+
+**Role:** CAIO · CAIIP · AI Systems Architect  
+**Focus:** AI Governance · Security · Automation · Cloud · DevOps
+
+This page provides a live, verifiable view of certifications, domains, and applied system knowledge for recruiters, partners, and hiring managers.
+
 # 🔥 Certificate Wall — Andrew “Commander Flame” Davis
 
 > **AI Governance • Cloud Architecture • Automation Engineering • Real-World Deployment**
