@@ -210,22 +210,21 @@ This certification portfolio represents hands-on capability across governance, c
 
   if (voiceBtn && aboutText && "speechSynthesis" in window) {
     voiceBtn.addEventListener("click", () => {
-      // small visual confirmation
-      voiceBtn.textContent = "▶ Playing intro + certs…";
+  // small visual confirmation
+  voiceBtn.textContent = "▶️ Playing intro…";
 
-      // stop any previous speech
-      speechSynthesis.cancel();
+  // stop any previous speech
+  speechSynthesis.cancel();
 
-      // main about text + cert narration
-      const fullSpeech =
-        aboutText.innerText.trim() + " " + certNarration.trim();
+  // main about text + cert narration
+  const fullSpeech =
+    aboutText.innerText.trim() + " " + certNarration.trim();
 
-      const utterance = new SpeechSynthesisUtterance(fullSpeech); 
-      utterance.rate = 1;
-      utterance.pitch = 1;
-      speechSynthesis.speak(utterance);
-    });
-  }
+  const utterance = new SpeechSynthesisUtterance(fullSpeech);
+  utterance.rate = 1;
+  utterance.pitch = 1;
+
+  speechSynthesis.speak(utterance);
 });
 });
   const certNarration = `
