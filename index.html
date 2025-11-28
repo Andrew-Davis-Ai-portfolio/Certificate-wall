@@ -71,26 +71,5 @@
 <section class="fd-wall" id="fd-wall"></section>
 
 <script src="assets/wall.js"></script>
-
-    (function () {
-    const btn = document.getElementById('fd-voice-btn');
-    const aboutSection = document.querySelector('.fd-about');
-
-    if (!btn || !aboutSection || !('speechSynthesis' in window)) return;
-
-    btn.addEventListener('click', () => {
-      const text = aboutSection.innerText.trim();
-      if (!text) return;
-
-      speechSynthesis.cancel();
-
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1;
-      utterance.pitch = 1;
-      speechSynthesis.speak(utterance);
-    });
-  })();
-</script>
-      
 </body>
 </html>
