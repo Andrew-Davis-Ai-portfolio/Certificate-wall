@@ -287,8 +287,10 @@ window.__playIntro = function () {
 window.__playCerts = function () {
   if (!("speechSynthesis" in window)) return;
 
-  const certNarration = `
+  // ===== Voice Narration Text (GLOBAL) =====
+const certNarration = `
 Andrew Davis holds over thirty five professional certifications including
+
 Certified Chief AI Officer.
 Certified AI Implementation Professional.
 AWS Security Specialty.
@@ -301,8 +303,31 @@ AI Strategy and Executive Leadership.
 N8N Workflow and Automation Engineering.
 AI Voice and Video Automation.
 Medical and Business AI Systems.
+
 This portfolio represents hands on capability across governance cloud security automation and ethical AI deployment.
-  `.trim();
+`.trim();
+
+// ===== Voice Functions (GLOBAL) =====
+
+window.__playIntro = function () {
+  if (!("speechSynthesis" in window)) return;
+
+  const aboutText = document.querySelector(".fd-about");
+  if (!aboutText) return;
+
+  speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(
+    aboutText.innerText.trim()
+  );
+  utterance.rate = 1;
+  utterance.pitch = 1;
+
+  speechSynthesis.speak(utterance);
+};
+
+window.__playCerts = function () {
+  if (!("speechSynthesis" in window)) return;
 
   speechSynthesis.cancel();
 
