@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Andrew Davis — Certification Wall</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="fd-bg-glow"></div>
+
+  <header class="fd-header">
+    <div class="fd-header-inner">
+      <div>
+        <h1>Andrew W. Davis</h1>
+        <p class="fd-subtitle">
+          CAIO • CAIIP • AI Systems Architect • Flame Division Academy
+        </p>
+      </div>
+      <div class="fd-header-meta">
+        <span class="fd-pill">35+ Certifications</span>
+        <span class="fd-pill fd-pill-gold">Governance • Cloud • Security • Automation</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="fd-main">
+    <section class="fd-intro">
+      <h2>Certification Wall</h2>
+      <p>
+        A visual ledger of verified training across AI governance, automation, cloud,
+        cybersecurity, data, and DevOps. Hover to reveal domains, click to inspect.
+      </p>
+    </section>
+
+    <section class="fd-wall" id="fd-wall">
+      <!-- Tiles are injected by wall.js -->
+    </section>
+  </main>
+
+  <!-- Simple lightbox for full cert view -->
+  <div id="fd-lightbox" class="fd-lightbox">
+    <div class="fd-lightbox-inner">
+      <button class="fd-lightbox-close" aria-label="Close">&times;</button>
+      <img id="fd-lightbox-img" src="" alt="Certificate preview" />
+      <div id="fd-lightbox-meta" class="fd-lightbox-meta"></div>
+    </div>
+  </div>
+
+  <footer class="fd-footer">
+    <p>
+      Flame Division • Certification Wall • Built for recruiters, partners, and clients.
+    </p>
+  </footer>
+
+  <script src="wall.js"></script>
+</body>
+</html>
