@@ -344,3 +344,53 @@ body {
   color: #d6d9de;
   line-height: 1.7;
 }
+/* Voice / text-to-speech button */
+.fd-intro-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+#fd-about-text {
+  max-width: 640px;
+}
+
+.fd-voice-btn {
+  border: 1px solid rgba(245, 196, 81, 0.55);
+  background: radial-gradient(circle at top left, #f5c451 0, #3a2a10 40%, #0a0804 100%);
+  color: #0b0b0b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 0 16px rgba(245, 196, 81, 0.35);
+  white-space: nowrap;
+}
+
+.fd-voice-btn:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 0 22px rgba(245, 196, 81, 0.55);
+}
+
+.fd-voice-btn.is-speaking {
+  background: radial-gradient(circle at bottom right, #ffefb5 0, #f5c451 35%, #403014 100%);
+  color: #050505;
+}
+
+/* Mobile stack */
+@media (max-width: 768px) {
+  .fd-intro-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fd-voice-btn {
+    margin-top: 0.5rem;
+  }
+}
