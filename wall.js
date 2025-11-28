@@ -178,13 +178,16 @@ document.addEventListener("keydown", (e) => {
 });
 
 // 5) Init
-document.addEventListener("DOMContentLoaded", // Voice / Speech
-// ✅ Voice / Speech
-const voiceBtn = document.getElementById("fd-voice-btn");
-const aboutText = document.querySelector(".fd-about");
+document.addEventListener("DOMContentLoaded", () => {
+  // make sure the wall renders
+  renderWall();
 
-// This is the 35+ cert narration chunk
-const certNarration = `
+  // ✅ Voice / Speech
+  const voiceBtn = document.getElementById("fd-voice-btn");
+  const aboutText = document.querySelector(".fd-about");
+
+  // This is the 35+ cert narration chunk
+  const certNarration = `
 Andrew Davis holds over thirty five professional certifications, including:
 Certified Chief AI Officer, CAIO.
 Certified AI Implementation Professional, CAIIP.
@@ -201,21 +204,22 @@ AI Strategy and Executive Leadership.
 This certification portfolio represents hands-on capability across governance, cloud, security, automation, and responsible AI deployment.
 `;
 
-if (voiceBtn && aboutText && "speechSynthesis" in window) {
-  voiceBtn.addEventListener("click", () => {
-    // stop any previous speech
-    speechSynthesis.cancel();
+  if (voiceBtn && aboutText && "speechSynthesis" in window) {
+    voiceBtn.addEventListener("click", () => {
+      // stop any previous speech
+      speechSynthesis.cancel();
 
-    // main about text + cert narration
-    const fullSpeech =
-      aboutText.innerText.trim() + " " + certNarration.trim();
+      // main about text + cert narration
+      const fullSpeech =
+        aboutText.innerText.trim() + " " + certNarration.trim();
 
-    const utterance = new SpeechSynthesisUtterance(fullSpeech);
-    utterance.rate = 1;
-    utterance.pitch = 1;
-    speechSynthesis.speak(utterance);
-  });
-}
+      const utterance = new SpeechSynthesisUtterance(fullSpeech);
+      utterance.rate = 1;
+      utterance.pitch = 1;
+      speechSynthesis.speak(utterance);
+    });
+  }
+});
   const certNarration = `
 Andrew Davis holds over thirty five professional certifications, including:
 
