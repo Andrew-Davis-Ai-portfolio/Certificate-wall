@@ -36,137 +36,19 @@
     <div>
       <h2>Certification Wall</h2>
       <p id="fd-about-text">
-        A visual ledger of verified training across AI governance, automation, cloud,
-        cybersecurity, data, and DevOps — designed for recruiters, hiring managers,
-        and partners who need to verify depth, not hype. Each certificate represents
-        hands-on mastery in systems that can improve real-world operations:
-        governance, automation, security, cloud, and workflow design.
+        <!-- your about text -->
       </p>
     </div>
-    <button id="fd-voice-btn" class="fd-voice-btn" type="button">
-      ▶ Listen to this
-    </button>
+
+    <div class="fd-voice-block">
+      <div class="fd-avatar-orbit">
+        <div class="fd-avatar-circle">
+          <img src="assets/avatar-andrew.png" alt="Andrew W. Davis avatar" />
+        </div>
+      </div>
+      <button id="fd-voice-btn" class="fd-voice-btn" type="button">
+        ▶ Listen to this
+      </button>
+    </div>
   </div>
 </section>
-
-    <section class="fd-wall" id="fd-wall">
-      <!-- Tiles are injected by wall.js -->
-    </section>
-
-    <!-- Q&A / Value Prop -->
-    <section class="fd-qa">
-      <h2 class="fd-qa-title">What I Bring to a Business or Collaboration</h2>
-
-      <h3>What problem do you solve?</h3>
-      <p>
-        I help organizations move from AI curiosity to AI execution without creating risk,
-        confusion, or technical debt. Many businesses are overwhelmed by tools, vendors, and
-        hype. I provide clarity by translating strategy into deployable systems aligned with
-        governance, automation, and real operational needs.
-      </p>
-
-      <h3>How are you different?</h3>
-      <p>
-        Most professionals focus on either technology or leadership. I work at the intersection
-        of both. I can speak with executives in outcomes and constraints, then validate
-        implementation at the system level instead of relying on assumptions or buzzwords.
-      </p>
-
-      <h3>What value do you provide immediately?</h3>
-      <p>
-        I reduce chaos. I identify what should be automated, what should be governed, and what
-        should not be built at all. This saves time, protects reputation, and accelerates
-        decision-making.
-      </p>
-
-      <h3>Who do you work best with?</h3>
-      <p>
-        Teams that are scaling, adopting AI seriously, or dealing with operational complexity.
-        Especially leadership groups that need one accountable point of truth instead of
-        fragmented opinions.
-      </p>
-
-      <h3>Why trust your judgment?</h3>
-      <p>
-        Because I don’t sell hype. I bring verified training, governance-first thinking, and
-        hands-on systems understanding. When I say yes, it’s buildable. When I say no, it’s
-        protection.
-      </p>
-    </section>
-  </main>
-
-  <!-- Simple lightbox for full cert view -->
-  <div id="fd-lightbox" class="fd-lightbox">
-    <div class="fd-lightbox-inner">
-      <button class="fd-lightbox-close" aria-label="Close">&times;</button>
-      <img id="fd-lightbox-img" src="" alt="Certificate preview" />
-      <div id="fd-lightbox-meta" class="fd-lightbox-meta"></div>
-    </div>
-  </div>
-
-    <footer class="fd-footer">
-    <p>
-      Flame Division • Certification Wall • Built for recruiters, partners, and clients.
-    </p>
-  </footer>
-
-  <script src="wall.js"></script>
-
-  <!-- Text-to-speech for the About section -->
-  <script>
-    (function () {
-      const btn = document.getElementById('fd-voice-btn');
-      const about = document.getElementById('fd-about-text');
-
-      if (!btn || !about || !('speechSynthesis' in window)) {
-        // Browser doesn't support TTS or elements not found
-        return;
-      }
-
-      let isSpeaking = false;
-      let utterance = null;
-
-      function stopSpeaking() {
-        window.speechSynthesis.cancel();
-        isSpeaking = false;
-        btn.classList.remove('is-speaking');
-        btn.textContent = '▶ Listen to this';
-      }
-
-      function startSpeaking() {
-        const text = about.innerText.trim();
-        if (!text) return;
-
-        utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 1.0;   // speed (0.5–2)
-        utterance.pitch = 1.0;  // tone (0–2)
-        utterance.onend = stopSpeaking;
-        utterance.onerror = stopSpeaking;
-
-        isSpeaking = true;
-        btn.classList.add('is-speaking');
-        btn.textContent = '⏸ Stop';
-
-        window.speechSynthesis.speak(utterance);
-      }
-
-      btn.addEventListener('click', () => {
-        if (isSpeaking) {
-          stopSpeaking();
-        } else {
-          // stop any other speech first
-          window.speechSynthesis.cancel();
-          startSpeaking();
-        }
-      });
-
-      // Escape key stops speech
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && isSpeaking) {
-          stopSpeaking();
-        }
-      });
-    })();
-  </script>
-</body>
-</html>
