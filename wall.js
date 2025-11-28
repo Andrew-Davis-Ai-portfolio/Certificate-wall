@@ -239,7 +239,6 @@ This certification portfolio represents hands-on capability across governance, c
     }
   }
 });
-}
   const certNarration = `
 Andrew Davis holds over thirty five professional certifications, including:
 
