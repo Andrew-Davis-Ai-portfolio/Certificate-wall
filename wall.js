@@ -177,9 +177,8 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeLightbox();
 });
 
-// 5) Init
+// 5) Init – just render the certificates
 document.addEventListener("DOMContentLoaded", () => {
-  // Just render the certificates like before
   renderWall();
 });
 
@@ -225,9 +224,6 @@ window.__playIntro = function () {
 // ===== CERT VOICE FUNCTION =====
 window.__playCerts = function () {
   if (!("speechSynthesis" in window)) return;
-
-  // DEBUG: prove the function is firing
-  alert("Playing certification narration…");
 
   // stop any previous speech
   speechSynthesis.cancel();
