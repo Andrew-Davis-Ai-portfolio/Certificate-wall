@@ -407,3 +407,16 @@ body {
     padding: 3rem 2.75rem;
   }
 }
+
+.fd-divider {
+  margin: 3rem auto 2.5rem;
+  border: none;
+  height: 1px;
+  max-width: 880px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(245,196,81,0.4),
+    transparent
+  );
+}
