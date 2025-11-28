@@ -207,7 +207,7 @@ AI Business Strategy & Automation.
 AI Coding & Cursor Engineering.
 
 This certification portfolio represents hands-on capability across governance, cloud, security, automation, and responsible AI deployment.
-`.trim();
+  `.trim();
 
   if ("speechSynthesis" in window) {
     // Intro button — reads the about section
