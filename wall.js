@@ -179,28 +179,32 @@ document.addEventListener("keydown", (e) => {
 
 // 5) Init
 document.addEventListener("DOMContentLoaded", () => {
-  // make sure the wall renders
+  // Render the certificates
   renderWall();
 
   // ✅ Voice / Speech
   const voiceBtn = document.getElementById("fd-voice-btn");
   const aboutText = document.querySelector(".fd-about");
 
-  // This is the 35+ cert narration chunk
+  // 35+ cert narration chunk
   const certNarration = `
 Andrew Davis holds over thirty five professional certifications, including:
-Certified Chief AI Officer, CAIO.
-Certified AI Implementation Professional, CAIIP.
+Certified Chief AI Officer (CAIO).
+Certified AI Implementation Professional (CAIIP).
 AWS Security Specialty.
 AWS DevOps Engineer Professional.
-Certified Kubernetes Administrator.
-Machine Learning Specialist.
-AI Governance and Ethics Certification.
-Cloud Architecture Professional.
-AI Risk and Compliance Specialist.
-Data Science and AI Masters.
-AI Automation Engineering.
+AWS Certified Machine Learning.
+Certified Kubernetes Administrator (CKA).
+Data Science & AI Masters 2025.
+AI Ethics & Guardrails – Responsible AI.
 AI Strategy and Executive Leadership.
+N8N Workflow & Automation Engineering.
+AI Voice Agent Engineering.
+AI Video & Content Automation.
+Medical AI – Clinical & Educational Use.
+AI Business Strategy & Automation.
+AI Coding & Cursor Engineering.
+
 This certification portfolio represents hands-on capability across governance, cloud, security, automation, and responsible AI deployment.
 `;
 
