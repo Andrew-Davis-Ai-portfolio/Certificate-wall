@@ -220,7 +220,7 @@ This certification portfolio represents hands-on capability across governance, c
       const fullSpeech =
         aboutText.innerText.trim() + " " + certNarration.trim();
 
-      const utterance = new SpeechSynthesisUtterance(fullSpeech);
+      const utterance = new SpeechSynthesisUtterance(fullSpeech); 
       utterance.rate = 1;
       utterance.pitch = 1;
       speechSynthesis.speak(utterance);
