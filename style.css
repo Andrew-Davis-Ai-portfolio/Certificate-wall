@@ -367,3 +367,43 @@ body {
   text-align: center;
   opacity: 0.8;
 }
+
+/* Flame Division — Q&A Panel */
+
+.fd-qa {
+  max-width: 960px;
+  margin: 3rem auto 4rem;
+  padding: 2.5rem 1.75rem;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, rgba(245,196,81,0.12), transparent 55%),
+              rgba(6,8,14,0.92);
+  border: 1px solid rgba(245,196,81,0.25);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.75);
+  line-height: 1.6;
+}
+
+.fd-qa h2 {
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f5c451;
+  margin-bottom: 1.25rem;
+}
+
+.fd-qa h3 {
+  font-size: 1.05rem;
+  margin-top: 1.75rem;
+  margin-bottom: 0.35rem;
+  color: #fefefe;
+}
+
+.fd-qa p {
+  font-size: 0.95rem;
+  color: #d1d5df;
+}
+
+@media (min-width: 900px) {
+  .fd-qa {
+    padding: 3rem 2.75rem;
+  }
+}
