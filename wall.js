@@ -182,8 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Render the certificates
   renderWall();
 
-  // ✅ Voice / Speech
+  // --- Voice / Speech setup ---
   const voiceBtn = document.getElementById("fd-voice-btn");
+  const certBtn = document.getElementById("fd-cert-btn");
   const aboutText = document.querySelector(".fd-about");
 
   // 35+ cert narration chunk
@@ -206,43 +207,38 @@ AI Business Strategy & Automation.
 AI Coding & Cursor Engineering.
 
 This certification portfolio represents hands-on capability across governance, cloud, security, automation, and responsible AI deployment.
-`;
+`.trim();
 
-  if (voiceBtn && aboutText && "speechSynthesis" in window) {
-  voiceBtn.addEventListener("click", () => {
-    // small visual confirmation
-    voiceBtn.textContent = "▶️ Playing intro…";
+  if ("speechSynthesis" in window) {
+    // Intro button — reads the about section
+    if (voiceBtn && aboutText) {
+      voiceBtn.addEventListener("click", () => {
+        speechSynthesis.cancel();
 
-    // stop any previous speech
-    speechSynthesis.cancel();
+        const intro = new SpeechSynthesisUtterance(
+          aboutText.innerText.trim()
+        );
+        intro.rate = 1;
+        intro.pitch = 1;
 
-    // split into two chunks so Safari / iOS doesn't cut it off
-    const parts = [
-      aboutText.innerText.trim(),
-      certNarration.trim()
-    ];
+        speechSynthesis.speak(intro);
+      });
+    }
 
-    let index = 0;
+    // Cert button — reads ONLY the certifications block
+    if (certBtn) {
+      certBtn.addEventListener("click", () => {
+        speechSynthesis.cancel();
 
-    const speakNext = () => {
-      if (index >= parts.length) {
-        // reset button text when finished
-        voiceBtn.textContent = "▶️ Listen to this";
-        return;
-      }
+        const certUtterance = new SpeechSynthesisUtterance(certNarration);
+        certUtterance.rate = 1;
+        certUtterance.pitch = 1;
 
-      const utterance = new SpeechSynthesisUtterance(parts[index]);
-      utterance.rate = 1;
-      utterance.pitch = 1;
-
-      utterance.onend = speakNext; // when one finishes, play the next
-      speechSynthesis.speak(utterance);
-
-      index++;
-    };
-
-    speakNext();
-  });
+        speechSynthesis.speak(certUtterance);
+      });
+    }
+  }
+});
 }
   const certNarration = `
 Andrew Davis holds over thirty five professional certifications, including:
