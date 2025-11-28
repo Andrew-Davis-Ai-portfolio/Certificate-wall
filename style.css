@@ -394,3 +394,50 @@ body {
     margin-top: 0.5rem;
   }
 }
+
+.fd-voice-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.fd-avatar-orbit {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 196, 81, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.fd-avatar-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at top, #f5c451, #111);
+}
+
+.fd-avatar-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Pulse when speaking */
+.fd-voice-btn.is-speaking + .fd-avatar-orbit,
+.fd-avatar-orbit.is-speaking {
+  animation: fd-avatar-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes fd-avatar-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 196, 81, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 16px rgba(245, 196, 81, 0);
+  }
+}
