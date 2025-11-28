@@ -185,16 +185,20 @@ const aboutText = document.querySelector(".fd-about");
 
 if (voiceBtn && aboutText && "speechSynthesis" in window) {
   voiceBtn.addEventListener("click", () => {
-    speechSynthesis.cancel();
+  speechSynthesis.cancel();
 
-    const utterance = new SpeechSynthesisUtterance(
-      aboutText.innerText.trim()
-    );
-    utterance.rate = 1;
-    utterance.pitch = 1;
+  const fullSpeech =
+    aboutText.innerText.trim() +
+    " The following certifications validate this capability. " +
+    certList.map(c => c.title).join(", ") +
+    ". End of certifications.";
 
-    speechSynthesis.speak(utterance);
-  });
+  const utterance = new SpeechSynthesisUtterance(fullSpeech);
+  utterance.rate = 1;
+  utterance.pitch = 1;
+
+  speechSynthesis.speak(utterance);
+});
 
   const certNarration = `
 Andrew Davis holds over thirty five professional certifications, including:
