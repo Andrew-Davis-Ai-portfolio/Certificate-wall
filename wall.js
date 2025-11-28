@@ -226,6 +226,9 @@ window.__playIntro = function () {
 window.__playCerts = function () {
   if (!("speechSynthesis" in window)) return;
 
+  // DEBUG: prove the function is firing
+  alert("Playing certification narration…");
+
   // stop any previous speech
   speechSynthesis.cancel();
 
