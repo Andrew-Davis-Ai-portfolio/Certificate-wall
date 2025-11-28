@@ -341,3 +341,22 @@ body {
     height: 110px;
   }
 }
+
+.fd-qa {
+  max-width: 900px;
+  margin: 4rem auto 2rem;
+  padding: 2rem;
+  background: rgba(10, 15, 20, 0.6);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.fd-qa h2 {
+  color: #e6f0ff;
+  margin-bottom: 1.5rem;
+}
+
+.fd-qa p {
+  line-height: 1.6;
+  color: #cfd8e3;
+}
