@@ -287,7 +287,7 @@ window.__playIntro = function () {
 window.__playCerts = function () {
   if (!("speechSynthesis" in window)) return;
 
-  // ===== Voice Narration Text (GLOBAL) =====
+  // ===== CERT NARRATION (GLOBAL TEXT) =====
 const certNarration = `
 Andrew Davis holds over thirty five professional certifications including
 
@@ -307,8 +307,7 @@ Medical and Business AI Systems.
 This portfolio represents hands on capability across governance cloud security automation and ethical AI deployment.
 `.trim();
 
-// ===== Voice Functions (GLOBAL) =====
-
+// ===== INTRO VOICE FUNCTION =====
 window.__playIntro = function () {
   if (!("speechSynthesis" in window)) return;
 
@@ -326,6 +325,7 @@ window.__playIntro = function () {
   speechSynthesis.speak(utterance);
 };
 
+// ===== CERT VOICE FUNCTION =====
 window.__playCerts = function () {
   if (!("speechSynthesis" in window)) return;
 
