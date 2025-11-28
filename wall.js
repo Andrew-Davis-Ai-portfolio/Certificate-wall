@@ -264,3 +264,51 @@ AI Strategy and Executive Leadership.
 This certification portfolio represents hands-on capability across governance, cloud, security, automation, and responsible AI deployment.
 `;
 }
+
+// ===== Voice Functions (GLOBAL) =====
+
+window.__playIntro = function () {
+  if (!("speechSynthesis" in window)) return;
+
+  const aboutText = document.querySelector(".fd-about");
+  if (!aboutText) return;
+
+  speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(
+    aboutText.innerText.trim()
+  );
+  utterance.rate = 1;
+  utterance.pitch = 1;
+
+  speechSynthesis.speak(utterance);
+};
+
+window.__playCerts = function () {
+  if (!("speechSynthesis" in window)) return;
+
+  const certNarration = `
+Andrew Davis holds over thirty five professional certifications including
+Certified Chief AI Officer.
+Certified AI Implementation Professional.
+AWS Security Specialty.
+AWS DevOps Engineer Professional.
+AWS Certified Machine Learning.
+Certified Kubernetes Administrator.
+Data Science and AI Masters.
+AI Ethics and Responsible AI.
+AI Strategy and Executive Leadership.
+N8N Workflow and Automation Engineering.
+AI Voice and Video Automation.
+Medical and Business AI Systems.
+This portfolio represents hands on capability across governance cloud security automation and ethical AI deployment.
+  `.trim();
+
+  speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(certNarration);
+  utterance.rate = 1;
+  utterance.pitch = 1;
+
+  speechSynthesis.speak(utterance);
+};
