@@ -179,115 +179,11 @@ document.addEventListener("keydown", (e) => {
 
 // 5) Init
 document.addEventListener("DOMContentLoaded", () => {
-  // Render the certificates
+  // Just render the certificates like before
   renderWall();
-
-  const aboutText = document.querySelector(".fd-about");
-
-  // If the browser doesn't support speech, bail early
-  if (!("speechSynthesis" in window) || !aboutText) {
-    return;
-  }
-
-  // 35+ cert narration chunk
-  const certNarration = `
-Andrew Davis holds over thirty five professional certifications, including:
-Certified Chief AI Officer (CAIO).
-Certified AI Implementation Professional (CAIIP).
-AWS Security Specialty.
-AWS DevOps Engineer Professional.
-AWS Certified Machine Learning.
-Certified Kubernetes Administrator (CKA).
-Data Science & AI Masters 2025.
-AI Ethics & Guardrails – Responsible AI.
-AI Strategy and Executive Leadership.
-N8N Workflow & Automation Engineering.
-AI Voice Agent Engineering.
-AI Video & Content Automation.
-Medical AI – Clinical & Educational Use.
-AI Business Strategy & Automation.
-AI Coding & Cursor Engineering.
-
-This certification portfolio represents hands-on capability across governance, cloud, security, automation, and responsible AI deployment.
-  `.trim();
-
-  // Expose functions so inline onclick can use them
-  window.__playIntro = function () {
-    speechSynthesis.cancel();
-
-    const intro = new SpeechSynthesisUtterance(
-      aboutText.innerText.trim()
-    );
-    intro.rate = 1;
-    intro.pitch = 1;
-
-    speechSynthesis.speak(intro);
-  };
-
-  window.__playCerts = function () {
-    speechSynthesis.cancel();
-
-    const certUtterance = new SpeechSynthesisUtterance(certNarration);
-    certUtterance.rate = 1;
-    certUtterance.pitch = 1;
-
-    speechSynthesis.speak(certUtterance);
-  };
-
-  // Also wire up via addEventListener (belt + suspenders)
-  const voiceBtn = document.getElementById("fd-voice-btn");
-  const certBtn = document.getElementById("fd-cert-btn");
-
-  if (voiceBtn) {
-    voiceBtn.addEventListener("click", window.__playIntro);
-  }
-  if (certBtn) {
-    certBtn.addEventListener("click", window.__playCerts);
-  }
 });
-  const certNarration = `
-Andrew Davis holds over thirty five professional certifications, including:
 
-Certified Chief AI Officer, CAIO.
-Certified AI Implementation Professional, CAIIP.
-AWS Security Specialty.
-AWS DevOps Engineer Professional.
-Certified Kubernetes Administrator.
-Machine Learning Specialist.
-AI Governance and Ethics Certification.
-Cloud Architecture Professional.
-AI Risk and Compliance Specialist.
-Data Science and AI Masters.
-AI Automation Engineering.
-AI Strategy and Executive Leadership.
-
-This certification portfolio represents hands-on capability across governance, cloud, security, automation, and responsible AI deployment.
-`;
-}
-
-// ===== Voice Functions (GLOBAL) =====
-
-window.__playIntro = function () {
-  if (!("speechSynthesis" in window)) return;
-
-  const aboutText = document.querySelector(".fd-about");
-  if (!aboutText) return;
-
-  speechSynthesis.cancel();
-
-  const utterance = new SpeechSynthesisUtterance(
-    aboutText.innerText.trim()
-  );
-  utterance.rate = 1;
-  utterance.pitch = 1;
-
-  speechSynthesis.speak(utterance);
-};
-
-window.__playCerts = function () {
-  if (!("speechSynthesis" in window)) return;
-
-  // ===== CERT NARRATION (GLOBAL TEXT) =====
+// ===== CERT NARRATION TEXT (GLOBAL) =====
 const certNarration = `
 Andrew Davis holds over thirty five professional certifications including
 
@@ -304,7 +200,7 @@ N8N Workflow and Automation Engineering.
 AI Voice and Video Automation.
 Medical and Business AI Systems.
 
-This portfolio represents hands on capability across governance cloud security automation and ethical AI deployment.
+This portfolio represents hands on capability across governance, cloud security, automation, and ethical AI deployment.
 `.trim();
 
 // ===== INTRO VOICE FUNCTION =====
@@ -314,6 +210,7 @@ window.__playIntro = function () {
   const aboutText = document.querySelector(".fd-about");
   if (!aboutText) return;
 
+  // stop any previous speech
   speechSynthesis.cancel();
 
   const utterance = new SpeechSynthesisUtterance(
@@ -329,6 +226,7 @@ window.__playIntro = function () {
 window.__playCerts = function () {
   if (!("speechSynthesis" in window)) return;
 
+  // stop any previous speech
   speechSynthesis.cancel();
 
   const utterance = new SpeechSynthesisUtterance(certNarration);
