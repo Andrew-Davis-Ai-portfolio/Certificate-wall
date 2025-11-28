@@ -3,13 +3,15 @@
 // 1) Data: map each cert to its image + meta
 // NOTE: Make sure img paths & names match files in /Certs exactly.
 
+// wall.js — Flame Division Floating Cert Wall (Phase 2 — Einhorn Online)
+
 const CERTS = [
   {
     id: "caio",
     title: "Certified Chief AI Officer (CAIO)",
     org: "School of AI / Udemy",
     domain: "AI Strategy • Governance • Executive Leadership",
-    img: "Certs/Caio.png"
+    img: "Certs/caio.png"
   },
   {
     id: "caiip",
@@ -23,7 +25,7 @@ const CERTS = [
     title: "AI Ethics & Guardrails",
     org: "Udemy",
     domain: "Responsible AI • Risk • Governance",
-    img: "Certs/ai ethics.png"
+    img: "Certs/aiethics.png"
   },
   {
     id: "n8n",
@@ -37,7 +39,7 @@ const CERTS = [
     title: "AWS Security Specialty (Prep)",
     org: "AWS / Udemy",
     domain: "Cloud Security • IAM • Governance",
-    img: "Certs/Aws security de….png" // <— fix this to EXACT file name
+    img: "Certs/scs-c02.png"       // AWS security prep
   },
   {
     id: "aws-devops",
@@ -54,62 +56,55 @@ const CERTS = [
     img: "Certs/mls-c01.png"
   },
   {
-    id: "cka",
-    title: "CKA — Kubernetes Administrator (Hands-On)",
-    org: "Linux Foundation / Udemy",
-    domain: "Kubernetes • Clusters • DevOps",
-    img: "Certs/Cka with practic….png" // fix to exact filename
-  },
-  {
-    id: "data-science",
-    title: "Data Science & AI Masters 2025",
-    org: "Udemy",
-    domain: "Python • ML • Data Pipelines",
-    img: "Certs/data science an….png"
-  },
-  {
-    id: "technical-lead",
-    title: "Technical Leadership for the AI Era",
-    org: "Udemy",
-    domain: "Leadership • Management • AI Strategy",
-    img: "Certs/technical leader….png"
-  },
-  {
-    id: "ai-video",
-    title: "AI Video & Content Automation",
-    org: "Udemy",
-    domain: "Video AI • Automation • Content Systems",
-    img: "Certs/ai video .png"
-  },
-  {
     id: "medical-ai",
     title: "Medical AI — Clinical & Educational Use",
     org: "Udemy",
     domain: "Healthcare AI • Safety • Education",
-    img: "Certs/Medical Ai.png"
+    img: "Certs/medicalai.png"
   },
   {
     id: "ai-voice",
     title: "AI Voice Agent Engineering",
     org: "Udemy",
     domain: "Voice Bots • Call Automation",
-    img: "Certs/Ai voice Agent.png"
+    img: "Certs/aivoiceagent.png"
+  },
+  {
+    id: "ai-video",
+    title: "AI Video & Content Automation",
+    org: "Udemy",
+    domain: "Video AI • Automation • Content Systems",
+    img: "Certs/aivideo.png"
   },
   {
     id: "ai-business",
     title: "AI & Business Strategy",
     org: "Udemy",
     domain: "Business • Strategy • Automation",
-    img: "Certs/Ai and business ….png"
+    img: "Certs/aiandbusiness.png"
   },
   {
     id: "ai-coding",
     title: "AI Coding & Cursor Engineering",
     org: "Udemy",
     domain: "Cursor • AI Coding • Dev Workflows",
-    img: "Certs/Ai coding cursor….png"
+    img: "Certs/aicodingcursorcert.png"
+  },
+  {
+    id: "vibe-coding",
+    title: "AI-Powered Data & Vibe Coding",
+    org: "Udemy",
+    domain: "Data • Analytics • Visualization",
+    img: "Certs/vibecoding.png"
+  },
+  {
+    id: "ai-engineer",
+    title: "AI Engineer Foundations",
+    org: "Udemy",
+    domain: "LLMs • Systems • Deployment",
+    img: "Certs/aiengineer.png"
   }
-  // 👉 Add more certs here as needed
+  // You can append more certs here any time — just keep img paths in sync
 ];
 
 // 2) DOM references
