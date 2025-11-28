@@ -179,3 +179,20 @@ document.addEventListener("keydown", (e) => {
 
 // 5) Init
 document.addEventListener("DOMContentLoaded", renderWall);
+// ✅ Voice / Speech
+const voiceBtn = document.getElementById("fd-voice-btn");
+const aboutText = document.querySelector(".fd-about");
+
+if (voiceBtn && aboutText && "speechSynthesis" in window) {
+  voiceBtn.addEventListener("click", () => {
+    speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(
+      aboutText.innerText.trim()
+    );
+    utterance.rate = 1;
+    utterance.pitch = 1;
+
+    speechSynthesis.speak(utterance);
+  });
+}
