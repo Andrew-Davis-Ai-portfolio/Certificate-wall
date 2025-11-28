@@ -100,7 +100,7 @@ const CERTS = [
     org: "Udemy",
     domain: "Business • Strategy • Automation",
     img: "Certs/ai-business.png"
-  },
+  }, or
   {
     id: "ai-coding",
     title: "AI Coding & Cursor Engineering",
@@ -179,30 +179,40 @@ document.addEventListener("keydown", (e) => {
 
 // 5) Init
 document.addEventListener("DOMContentLoaded", // Voice / Speech
-// Voice / Speech
+// ✅ Voice / Speech
 const voiceBtn = document.getElementById("fd-voice-btn");
-const aboutText = document.getElementById("fd-about-text");
+const aboutText = document.querySelector(".fd-about");
+
+// This is the 35+ cert narration chunk
+const certNarration = `
+Andrew Davis holds over thirty five professional certifications, including:
+Certified Chief AI Officer, CAIO.
+Certified AI Implementation Professional, CAIIP.
+AWS Security Specialty.
+AWS DevOps Engineer Professional.
+Certified Kubernetes Administrator.
+Machine Learning Specialist.
+AI Governance and Ethics Certification.
+Cloud Architecture Professional.
+AI Risk and Compliance Specialist.
+Data Science and AI Masters.
+AI Automation Engineering.
+AI Strategy and Executive Leadership.
+This certification portfolio represents hands-on capability across governance, cloud, security, automation, and responsible AI deployment.
+`;
 
 if (voiceBtn && aboutText && "speechSynthesis" in window) {
   voiceBtn.addEventListener("click", () => {
-    // stop anything currently speaking
+    // stop any previous speech
     speechSynthesis.cancel();
 
-    // main about text
-    const about = aboutText.innerText.trim();
-
-    // build a comma-separated list of cert titles from CERTS
-    const certNames = CERTS.map(c => c.title).join(", ");
-
-    // full narration
+    // main about text + cert narration
     const fullSpeech =
-      `${about} The following certifications validate this capability: ` +
-      `${certNames}. End of certifications.`;
+      aboutText.innerText.trim() + " " + certNarration.trim();
 
     const utterance = new SpeechSynthesisUtterance(fullSpeech);
     utterance.rate = 1;
     utterance.pitch = 1;
-
     speechSynthesis.speak(utterance);
   });
 }
