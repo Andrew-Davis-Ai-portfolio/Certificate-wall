@@ -1,3 +1,5 @@
+console.log("🔥 wall.js LOADED");
+window.alert("🔥 wall.js LOADED");
 // wall.js — Flame Division Floating Cert Wall (with simple voice buttons)
 
 // 1) Data: map each cert to its image + meta
