@@ -52,22 +52,28 @@
 
 <div class="fd-voice-wrap">
   <!-- Intro / About narration -->
-<button
-  class="fd-voice-btn"
-  id="fd-voice-btn"
-  onclick="window.__playIntro && window.__playIntro()"
->
-  ▶ Listen to this
-</button>
+<section class="fd-intro">
+  <h2>Certification Wall</h2>
+  <p>
+    A visual ledger of verified training across AI governance, automation, cloud,
+    cybersecurity, data, and DevOps. Hover to reveal domains, click to inspect.
+  </p>
 
-<!-- Certifications narration -->
-<button
-  class="fd-voice-btn fd-voice-btn--secondary"
-  id="fd-cert-btn"
-  onclick="window.__playCerts && window.__playCerts()"
->
-  ▶ Hear certifications
-</button>
+  <!-- ✅ KEEP ONLY THIS BUTTON GROUP HERE -->
+  <button
+    class="fd-voice-btn"
+    onclick="window.__playIntro && window.__playIntro()"
+  >
+    ▶ Listen to this
+  </button>
+
+  <button
+    class="fd-voice-btn fd-voice-btn--secondary"
+    onclick="window.__playCerts && window.__playCerts()"
+  >
+    ▶ Hear certifications
+  </button>
+</section>
 </div>
 </section>
 
