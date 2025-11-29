@@ -221,6 +221,8 @@ window.__playIntro = function () {
 };
 
 window.__playCerts = function () {
+  alert("✅ CERT BUTTON CLICKED");
+};
   if (!("speechSynthesis" in window)) return;
 
   speechSynthesis.cancel();
