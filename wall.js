@@ -221,7 +221,9 @@ window.__playIntro = function () {
 };
 
 window.__playCerts = function () {
-  alert("✅ CERT BUTTON CLICKED");
+  alert("🎤 Attempting speech");
+  const u = new SpeechSynthesisUtterance("This is a speech test");
+  window.speechSynthesis.speak(u);
 };
   if (!("speechSynthesis" in window)) return;
 
