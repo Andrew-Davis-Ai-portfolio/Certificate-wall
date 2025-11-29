@@ -1,7 +1,4 @@
-// wall.js — Flame Division Floating Cert Wall (clean voice + wall)
-
-// Just to confirm load in console
-console.log("🔥 wall.js loaded");
+// wall.js — Flame Division Floating Cert Wall (with simple voice buttons)
 
 // 1) Data: map each cert to its image + meta
 const CERTS = [
@@ -31,85 +28,86 @@ const CERTS = [
     title: "N8N – Workflow & Automation Engineering",
     org: "Udemy",
     domain: "Automation • Orchestration • Integration",
-    img: "Certs/N8n.png"
+    img: "Certs/n8n.png"
   },
   {
     id: "aws-sec",
     title: "AWS Security Specialty (Prep)",
     org: "AWS / Udemy",
     domain: "Cloud Security • IAM • Governance",
-    img: "Certs/Aws-security.png"
+    img: "Certs/aws-security.png"
   },
   {
     id: "aws-devops",
     title: "AWS DevOps Engineer (DOP-C02 Prep)",
     org: "AWS / Udemy",
     domain: "DevOps • CI/CD • Cloud Automation",
-    img: "Certs/Dop-c02.png"
+    img: "Certs/aws-devops.png"
   },
   {
     id: "aws-ml",
     title: "AWS Certified Machine Learning (MLS-C01 Prep)",
     org: "AWS / Udemy",
     domain: "ML • Cloud Pipelines",
-    img: "Certs/Mls-c01.png"
+    img: "Certs/aws-ml.png"
   },
   {
     id: "cka",
     title: "CKA — Kubernetes Administrator (Hands-On)",
     org: "Linux Foundation / Udemy",
     domain: "Kubernetes • Clusters • DevOps",
-    img: "Certs/Cka.png"
+    img: "Certs/cka.png"
   },
   {
     id: "data-science",
     title: "Data Science & AI Masters 2025",
     org: "Udemy",
     domain: "Python • ML • Data Pipelines",
-    img: "Certs/Data-science-ai-masters.png"
+    img: "Certs/data-science-ai-masters.png"
   },
   {
     id: "technical-lead",
     title: "Technical Leadership for the AI Era",
     org: "Udemy",
     domain: "Leadership • Management • AI Strategy",
-    img: "Certs/Technical-leadership.png"
+    img: "Certs/technical-leadership.png"
   },
   {
     id: "ai-video",
     title: "AI Video & Content Automation",
     org: "Udemy",
     domain: "Video AI • Automation • Content Systems",
-    img: "Certs/Ai-video.png"
+    img: "Certs/ai-video.png"
   },
   {
     id: "medical-ai",
     title: "Medical AI — Clinical & Educational Use",
     org: "Udemy",
     domain: "Healthcare AI • Safety • Education",
-    img: "Certs/Medical-ai.png"
+    img: "Certs/medical-ai.png"
   },
   {
     id: "ai-voice",
     title: "AI Voice Agent Engineering",
     org: "Udemy",
     domain: "Voice Bots • Call Automation",
-    img: "Certs/Ai-voice-agent.png"
+    img: "Certs/ai-voice.png"
   },
   {
     id: "ai-business",
     title: "AI & Business Strategy",
     org: "Udemy",
     domain: "Business • Strategy • Automation",
-    img: "Certs/Ai-business.png"
+    img: "Certs/ai-business.png"
   },
   {
     id: "ai-coding",
     title: "AI Coding & Cursor Engineering",
     org: "Udemy",
     domain: "Cursor • AI Coding • Dev Workflows",
-    img: "Certs/Ai-coding-cursor.png"
+    img: "Certs/ai-coding-cursor.png"
   }
+  // 👉 add more certs here if you want later
 ];
 
 // 2) DOM references
@@ -146,7 +144,7 @@ function renderWall() {
 // 4) Lightbox controls
 function openLightbox(index) {
   const cert = CERTS[index];
-  if (!cert || !lightboxEl || !lightboxImgEl || !lightboxMetaEl) return;
+  if (!cert) return;
 
   lightboxImgEl.src = cert.img;
   lightboxImgEl.alt = cert.title;
@@ -161,7 +159,6 @@ function openLightbox(index) {
 }
 
 function closeLightbox() {
-  if (!lightboxEl || !lightboxImgEl) return;
   lightboxEl.classList.remove("fd-lightbox-open");
   lightboxImgEl.src = "";
 }
@@ -180,15 +177,21 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeLightbox();
 });
 
-// 5) Init
+// 5) Init wall
 document.addEventListener("DOMContentLoaded", () => {
   renderWall();
 });
 
-// ===== CERT NARRATION TEXT (GLOBAL) =====
-const certNarration = `
-Andrew Davis holds over thirty five professional certifications including
+// ===== VOICE TEXT =====
+const INTRO_TEXT = `
+Andrew W. Davis — CAIO, CAIIP, AI Systems Architect.
+This certification wall is a live ledger for Flame Division Academy.
+It shows verified training across AI governance, automation, cloud, security, data and DevOps.
+Use this page as an at-a-glance signal that you are not just hiring titles — you are hiring implementation.
+`.trim();
 
+const CERT_TEXT = `
+Andrew Davis holds over thirty five professional certifications, including:
 Certified Chief AI Officer.
 Certified AI Implementation Professional.
 AWS Security Specialty.
@@ -201,37 +204,26 @@ AI Strategy and Executive Leadership.
 N8N Workflow and Automation Engineering.
 AI Voice and Video Automation.
 Medical and Business AI Systems.
-
-This portfolio represents hands on capability across governance, cloud security, automation, and ethical AI deployment.
+This portfolio represents hands on capability across governance, cloud, security, automation and ethical AI deployment.
 `.trim();
 
-// ===== INTRO VOICE FUNCTION =====
+// ===== GLOBAL VOICE FUNCTIONS (used by inline onclick) =====
 window.__playIntro = function () {
   if (!("speechSynthesis" in window)) return;
 
-  const aboutText = document.querySelector(".fd-about");
-  if (!aboutText) return;
-
   speechSynthesis.cancel();
-
-  const utterance = new SpeechSynthesisUtterance(
-    aboutText.innerText.trim()
-  );
-  utterance.rate = 1;
-  utterance.pitch = 1;
-
-  speechSynthesis.speak(utterance);
+  const u = new SpeechSynthesisUtterance(INTRO_TEXT);
+  u.rate = 1;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
 };
 
-// ===== CERT VOICE FUNCTION =====
 window.__playCerts = function () {
   if (!("speechSynthesis" in window)) return;
 
   speechSynthesis.cancel();
-
-  const utterance = new SpeechSynthesisUtterance(certNarration);
-  utterance.rate = 1;
-  utterance.pitch = 1;
-
-  speechSynthesis.speak(utterance);
+  const u = new SpeechSynthesisUtterance(CERT_TEXT);
+  u.rate = 1;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
 };
