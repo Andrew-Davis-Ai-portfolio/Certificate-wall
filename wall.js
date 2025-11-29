@@ -232,3 +232,47 @@ window.__playCerts = function () {
 
   speechSynthesis.speak(utterance);
 };
+
+// ================================
+// 🎤 VOICE / SPEECH (GLOBAL)
+// ================================
+
+// --- Text content ---
+const introText = `
+I help organizations move from AI curiosity to AI execution without
+creating risk, confusion, or technical debt. This page demonstrates
+how governance, automation, and execution come together in real systems.
+`;
+
+const certText = `
+Andrew Davis holds over thirty five professional certifications including
+Certified Chief AI Officer.
+Certified AI Implementation Professional.
+Cloud Security and Architecture.
+AI Governance and Ethics.
+Automation Systems Engineering.
+Machine Learning Foundations.
+Data Science and AI Masters.
+And extensive hands on deployment experience.
+`;
+
+// --- Speech engine ---
+function speak(text) {
+  if (!("speechSynthesis" in window)) {
+    alert("Text to speech not supported in this browser.");
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 0.95;
+  utterance.pitch = 1;
+  utterance.lang = "en-US";
+
+  speechSynthesis.speak(utterance);
+}
+
+// --- Expose globally for HTML buttons ---
+window.__playIntro = () => speak(introText);
+window.__playCerts = () => speak(certText);
