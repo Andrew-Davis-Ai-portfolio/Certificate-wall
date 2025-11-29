@@ -227,3 +227,40 @@ window.__playCerts = function () {
   u.pitch = 1;
   speechSynthesis.speak(u);
 };
+
+// ===== CERT NARRATION TEXT =====
+const certNarration = `
+Andrew Davis holds over thirty five professional certifications including
+Certified Chief AI Officer.
+Certified AI Implementation Professional.
+AWS Security Specialty.
+AWS DevOps Engineer Professional.
+AWS Certified Machine Learning.
+Certified Kubernetes Administrator.
+Data Science and AI Masters.
+AI Ethics and Responsible AI.
+AI Strategy and Executive Leadership.
+N8N Workflow and Automation Engineering.
+AI Voice and Video Automation.
+Medical and Business AI Systems.
+`.trim();
+
+// ===== INTRO VOICE FUNCTION =====
+window.__playIntro = function () {
+  if (!("speechSynthesis" in window)) return;
+  const aboutText = document.querySelector(".fd-about");
+  if (!aboutText) return;
+
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(aboutText.innerText.trim());
+  speechSynthesis.speak(utterance);
+};
+
+// ===== CERT VOICE FUNCTION =====
+window.__playCerts = function () {
+  if (!("speechSynthesis" in window)) return;
+
+  speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(certNarration);
+  speechSynthesis.speak(utterance);
+};
